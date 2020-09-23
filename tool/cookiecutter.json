@@ -1,0 +1,8 @@
+{
+  "tool_name": "Add Numbers",
+  "tool_version": "1.0.0",
+  "github_uri": "",
+  "image": "docker.io/library/python:slim-buster",
+  "memory": ["tiny"],
+  "tool_name_slug": "{{ cookiecutter.tool_name | lower | replace(' ', '_')}}"
+}

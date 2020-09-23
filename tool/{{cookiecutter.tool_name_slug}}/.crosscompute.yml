@@ -1,0 +1,46 @@
+---
+protocol: 0.8.3
+name: {{ cookiecutter.tool_name }}
+version:
+  name: {{ cookiecutter.tool_version }} 
+input:
+  variables:
+    - id: a
+      name: A
+      view: number
+      path: numbers.json
+    - id: b
+      name: B
+      view: number
+      path: numbers.json
+  templates:
+    - id: basic
+      name: Basic
+      path: templates/input/basic.md
+output:
+  variables:
+    - id: c
+      name: C
+      view: number
+      path: sum.json
+  templates:
+    - id: summary
+      name: Summary
+      path: templates/output/summary.md
+tests:
+  - id: integers
+    name: Add Integers
+    path: tests/integers
+  - id: floats
+    name: Add Floats
+    path: tests/floats
+script:
+  {%- if cookiecutter.github_uri != "" -%}
+    uri: {{ cookiecutter.github_uri }}
+  {% endif %}
+  folder: {{ cookiecutter.tool_name_slug }}
+  command: bash run.sh
+environment: 
+  image: {{ cookiecutter.image }} 
+  processor: cpu
+  memory: {{ cookiecutter.memory }}
